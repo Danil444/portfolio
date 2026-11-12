@@ -200,51 +200,6 @@ if (indexEl) {
   indexEl.addEventListener("mouseleave", () => { prev.classList.remove("on"); cancelAnimationFrame(raf); raf = null; });
 }
 
-/* ---------- Первый экран: переключатель аудиторий ---------- */
-const AUDIENCES = { team: ["evraz", "vsk", "nts"], client: ["pushkincard", "aromaros", "gkclinic"] };
-const audSwitch = $(".aud-switch");
-const stack = $("#hero-stack");
-if (audSwitch && stack) {
-  const onHome = (id) => !!P.find((p) => p.id === id && p.featured);
-  const renderStack = (aud) => {
-    stack.innerHTML = AUDIENCES[aud].map((id, i) => {
-      const p = P.find((x) => x.id === id);
-      return `<a class="st-card" data-i="${i}" href="${onHome(id) ? "#" + id : "portfolio.html#" + id}" ${i ? 'tabindex="-1" aria-hidden="true"' : ""}>
-        <img src="${p.cover}" alt="${esc(p.client)}">
-        <span class="st-cap"><span class="mono">${esc(p.client)}</span><b>${esc(p.title)}</b></span>
-      </a>`;
-    }).join("");
-  };
-  const setAud = (aud, animate) => {
-    audSwitch.dataset.active = aud;
-    $$("button", audSwitch).forEach((b) => b.setAttribute("aria-selected", String(b.dataset.aud === aud)));
-    $$(".aud-panel").forEach((panel) => {
-      const on = panel.dataset.aud === aud;
-      panel.hidden = !on;
-      if (on && animate) { panel.classList.remove("enter"); void panel.offsetWidth; panel.classList.add("enter"); }
-    });
-    if (animate && !reduced) {
-      stack.classList.add("swap");
-      setTimeout(() => { renderStack(aud); requestAnimationFrame(() => stack.classList.remove("swap")); }, 280);
-    } else renderStack(aud);
-    try { localStorage.setItem("aud", aud); } catch (e) {}
-  };
-  audSwitch.addEventListener("click", (e) => {
-    const b = e.target.closest("button[data-aud]");
-    if (b && b.dataset.aud !== audSwitch.dataset.active) setAud(b.dataset.aud, true);
-  });
-  audSwitch.addEventListener("keydown", (e) => {
-    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-    const next = audSwitch.dataset.active === "team" ? "client" : "team";
-    setAud(next, true);
-    $(`button[data-aud="${next}"]`, audSwitch).focus();
-  });
-  // ?for=client или ?for=team в ссылке выбирает вариант сразу
-  let start = new URLSearchParams(location.search).get("for");
-  if (!AUDIENCES[start]) { try { start = localStorage.getItem("aud"); } catch (e) {} }
-  setAud(AUDIENCES[start] ? start : "team", false);
-}
-
 /* ---------- Видео на первом экране (для будущего шоурила) ---------- */
 const hv = $("#hero-video");
 if (hv) {
@@ -313,3 +268,74 @@ const rio = "IntersectionObserver" in window
   ? new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); rio.unobserve(en.target); } }), { threshold: 0.06, rootMargin: "0px 0px -40px 0px" })
   : null;
 $$(".reveal").forEach((n) => (rio ? rio.observe(n) : n.classList.add("in")));
+
+const trustTrack = $(".trust-track");
+if (trustTrack && !reduced) {
+  const row = trustTrack.closest(".trust-row");
+  const toggle = $(".trust-toggle", row);
+  const copy = $(".trust-list", trustTrack).cloneNode(true);
+  copy.inert = true;
+  copy.setAttribute("aria-hidden", "true");
+  trustTrack.append(copy);
+  trustTrack.classList.add("is-moving");
+  toggle.hidden = false;
+  toggle.addEventListener("click", () => {
+    const paused = row.toggleAttribute("data-paused");
+    toggle.textContent = paused ? "Продолжить прокрутку" : "Остановить прокрутку";
+  });
+}
+
+const menuButton = $(".menu-toggle");
+if (menuButton) {
+  const menu = document.getElementById(menuButton.getAttribute("aria-controls"));
+  const mobile = matchMedia("(max-width: 640px)");
+
+  function setMenu(open) {
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+    menu.classList.toggle("is-open", open);
+  }
+
+  menuButton.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") === "false"));
+  menu.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu.classList.contains("is-open")) {
+      setMenu(false);
+      menuButton.focus();
+    }
+  });
+  mobile.addEventListener("change", () => setMenu(false));
+}
+
+const workPreview = $(".work-preview");
+if (workPreview) {
+  const slides = $$(".work-preview-slide", workPreview);
+  const track = $(".work-preview-track", workPreview);
+  const controls = $(".work-preview-controls", workPreview);
+  const counter = $("[data-slide-count]", controls);
+  let current = 0;
+
+  function renderSlides() {
+    slides.forEach((slide, index) => {
+      const offset = (index - current + slides.length) % slides.length;
+      const active = offset === 0;
+      slide.style.setProperty("--side", active ? 0 : offset === 1 ? 1 : -1);
+      slide.toggleAttribute("data-active", active);
+      slide.setAttribute("aria-hidden", String(!active));
+      slide.hidden = false;
+    });
+    counter.textContent = pad(current + 1) + " / " + pad(slides.length);
+  }
+
+  renderSlides();
+  track.classList.add("is-ready");
+  controls.hidden = false;
+  controls.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-slide-step]");
+    if (!button) return;
+    current = (current + Number(button.dataset.slideStep) + slides.length) % slides.length;
+    renderSlides();
+  });
+}
