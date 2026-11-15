@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+<script>if(location.pathname === "/index.html") location.replace("/" + location.search + location.hash);</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Данил Долматов — продуктовый и UX/UI-дизайнер</title>
@@ -8,21 +9,22 @@
   <meta property="og:title" content="Данил Долматов — продуктовый и UX/UI-дизайнер">
   <meta property="og:description" content="Веб-сервисы, мобильные приложения, сайты и бренды под ключ: от исследования до запуска.">
   <meta property="og:image" content="https://static.tildacdn.pub/tild3631-6530-4562-a431-313530376537/Frame_2087326157.png">
-  <link rel="icon" href="dolmateevich-mark.svg" type="image/svg+xml">
+  <link rel="icon" href="/dolmateevich-mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20261115-release">
+<link rel="canonical" href="https://dolmateevich.ru/">
 </head>
 <body id="top">
 
 <header class="header">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="dolmateevich-mark.svg" alt="" width="32" height="32">DOLMATEEVICH</a>
+    <a class="logo" href="/"><img src="/dolmateevich-mark.svg" alt="" width="32" height="32">DOLMATEEVICH</a>
     <nav class="nav" aria-label="Основное меню">
-      <a href="portfolio.html">Работы</a>
-      <a href="resume.html">Резюме</a>
-      <a href="index.html#contacts">Контакты</a>
+      <a href="/portfolio/">Работы</a>
+      <a href="/resume/">Резюме</a>
+      <a href="/#contacts">Контакты</a>
     </nav>
     <button class="theme-btn" aria-label="Сменить тему">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
@@ -33,10 +35,10 @@
     </button>
   </div>
   <nav class="mobile-nav" id="mobile-menu" aria-label="Меню">
-    <a href="index.html" aria-current="page">Главная</a>
-    <a href="portfolio.html">Работы</a>
-    <a href="resume.html">Резюме</a>
-    <a href="index.html#contacts">Контакты</a>
+    <a href="/" aria-current="page">Главная</a>
+    <a href="/portfolio/">Работы</a>
+    <a href="/resume/">Резюме</a>
+    <a href="/#contacts">Контакты</a>
     <a href="https://t.me/dolmateevich" target="_blank" rel="noopener">Обсудить проект ↗</a>
   </nav>
 </header>
@@ -47,7 +49,7 @@
   <div class="wrap intro">
     <div>
       <div class="intro-identity">
-        <span class="intro-avatar"><img src="danil-portrait.jpg" alt=""></span>
+        <span class="intro-avatar"><img src="/danil-portrait.jpg" alt=""></span>
         <div>
           <h1>Данил Долматов</h1>
           <p class="intro-role">Продуктовый дизайнер</p>
@@ -56,7 +58,7 @@
       <p class="lead">Проектирую веб-сервисы и приложения. Веду проекты от первых сценариев до запуска и поддержки.</p>
       <div class="hero-cta">
         <a class="btn btn-accent" href="#cases">Смотреть работы</a>
-        <a class="btn btn-ghost" href="resume.html">Резюме</a>
+        <a class="btn btn-ghost" href="/resume/">Резюме</a>
       </div>
     </div>
     <section class="work-preview" aria-label="Направления работы">
@@ -88,7 +90,7 @@
   <div class="wrap"><div class="trust-row reveal">
     <span class="mono muted">Работал с</span>
     <div class="trust-window"><div class="trust-track"><div class="trust-list">
-      <a href="#evraz">ЕВРАЗ</a><a href="portfolio.html#vsk">ВСК</a><a href="portfolio.html#nts">НефтеТрансСервис</a><a href="portfolio.html#sharipovo">Театры Красноярского края</a><a href="portfolio.html#aromaros">АРОМАРОС-М</a>
+      <a href="#evraz">ЕВРАЗ</a><a href="/portfolio/#vsk">ВСК</a><a href="/portfolio/#nts">НефтеТрансСервис</a><a href="/portfolio/#sharipovo">Театры Красноярского края</a><a href="/portfolio/#aromaros">АРОМАРОС-М</a>
       <a href="#pushkincard">Пушкинская карта</a>
     </div></div></div>
     <button class="trust-toggle" type="button" hidden>Остановить прокрутку</button>
@@ -102,7 +104,7 @@
       <div>
         <h2 class="h2">Избранные проекты</h2>
       </div>
-      <a class="btn btn-ghost" href="portfolio.html">Все работы →</a>
+      <a class="btn btn-ghost" href="/portfolio/">Все работы →</a>
     </div>
     <div class="cases" id="featured-cases"></div>
   </div>
@@ -117,21 +119,21 @@
       </div>
     </div>
     <nav class="index reveal" id="index" aria-label="Другие проекты"></nav>
-    <a class="btn btn-ghost" href="portfolio.html" style="margin-top:32px">Все 17 работ →</a>
+    <a class="btn btn-ghost" href="/portfolio/" style="margin-top:32px">Все 17 работ →</a>
   </div>
 </section>
 
 <!-- ============ ОБО МНЕ ============ -->
 <section class="section" id="about" style="padding-top:0">
   <div class="wrap about-grid">
-    <img class="about-photo reveal" src="danil-portrait.jpg" alt="Данил Долматов" loading="lazy">
+    <img class="about-photo reveal" src="/danil-portrait.jpg" alt="Данил Долматов" loading="lazy">
     <div class="about-text reveal">
       <span class="eyebrow mono">Обо мне</span>
       <h2 class="h2">Привет, я Данил</h2>
       <p>Продуктовый дизайнер с опытом более 6 лет. Проектировал корпоративные приложения для ЕВРАЗа, ВСК и НефтеТрансСервиса: мониторинг грузоперевозок в реальном времени, аналитические дашборды, системы нормативно-справочной информации.</p>
       <p>Развиваю дизайн-системы и превращаю сложные инструменты с большими объёмами данных в понятные рабочие интерфейсы. Параллельно веду клиентские проекты полного цикла: от исследования и прототипа до айдентики, UI и запуска сайта.</p>
       <div class="hero-cta">
-        <a class="btn btn-dark" href="resume.html">Резюме</a>
+        <a class="btn btn-dark" href="/resume/">Резюме</a>
         <a class="btn btn-ghost" href="https://t.me/dolmateevich" target="_blank" rel="noopener">Написать в Telegram</a>
       </div>
     </div>
@@ -171,7 +173,7 @@
       </div>
       <div class="niche-links">
         <a href="#pushkincard">pushkincard24.ru <span>→</span></a>
-        <a href="portfolio.html#sharipovo">Шариповский драмтеатр <span>→</span></a>
+        <a href="/portfolio/#sharipovo">Шариповский драмтеатр <span>→</span></a>
         <a href="https://sarapultheatre.ru/" target="_blank" rel="noopener">Сарапульский драмтеатр <span>↗</span></a>
       </div>
     </div>
@@ -230,22 +232,22 @@
   <div class="wrap">
     <div class="f-top">
       <div class="f-brand">
-        <a class="logo" href="index.html"><img src="dolmateevich-mark.svg" alt="" width="32" height="32">DOLMATEEVICH</a>
+        <a class="logo" href="/"><img src="/dolmateevich-mark.svg" alt="" width="32" height="32">DOLMATEEVICH</a>
         <p>Данил Долматов: продуктовый и UX/UI-дизайнер. Веб-сервисы, приложения, сайты и бренды под ключ.</p>
       </div>
-      <div class="f-col"><h4>Разделы</h4><a href="portfolio.html">Работы</a><a href="resume.html">Резюме</a><a href="index.html#services">Услуги</a><a href="index.html#contacts">Контакты</a></div>
+      <div class="f-col"><h4>Разделы</h4><a href="/portfolio/">Работы</a><a href="/resume/">Резюме</a><a href="/#services">Услуги</a><a href="/#contacts">Контакты</a></div>
       <div class="f-col"><h4>Связь</h4><a href="https://t.me/dolmateevich" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79298405889" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:dolmateevich@yandex.ru">Почта</a><a href="https://vk.com/dolmateevich" target="_blank" rel="noopener">ВКонтакте</a></div>
       <div class="f-col"><h4>Москва, GMT+3</h4><span class="f-clock" data-clock>--:--</span><span class="muted">Пишите в любое время</span></div>
     </div>
     <div class="f-bottom">
       <span>© 2020–<span data-year>2026</span> Данил Долматов. Сайт спроектирован и свёрстан мной.</span>
-      <a href="privacy.html">Политика обработки данных</a>
+      <a href="/privacy/">Политика обработки данных</a>
       <a class="to-top" href="#top">Наверх ↑</a>
     </div>
   </div>
 </footer>
 
-<script src="projects.js"></script>
-<script src="main.js"></script>
+<script src="/projects.js?v=20261115-release"></script>
+<script src="/main.js?v=20261115-release"></script>
 </body>
 </html>

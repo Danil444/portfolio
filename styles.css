@@ -240,6 +240,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .mini { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
 .mini[hidden] { display: none; }
 .mini .m-media { aspect-ratio: 4 / 3; background: var(--surface-2); overflow: hidden; }
+.mini button.m-media { display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in; }
+.mini-gallery-link { align-self: flex-start; margin-top: 8px; padding: 0; color: var(--text); font: inherit; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .mini .m-media img, .mini .m-media video { width: 100%; height: 100%; object-fit: cover; }
 .mini .m-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; }
 .mini b { font-family: var(--f-display); font-weight: 500; font-size: 17px; letter-spacing: -.02em; }

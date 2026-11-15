@@ -92,11 +92,14 @@ function caseHTML(p, i) {
 }
 
 function miniHTML(p) {
+  const imgs = [...new Set([p.cover, ...(p.gallery || [])].filter(Boolean))];
+  const galleryData = esc(JSON.stringify(imgs));
   return `
   <div class="mini reveal" data-cats="${p.cats.join(" ")}">
-    <div class="m-media">${media(p)}</div>
+    ${imgs.length ? `<button class="m-media" data-gallery="${galleryData}" data-start="0" aria-label="Открыть изображения: ${esc(p.client)}">${media(p)}</button>` : `<div class="m-media">${media(p)}</div>`}
     <div class="m-body">
       <b>${esc(p.client)}</b><span>${esc(p.title)} · ${esc(p.industry)}</span>
+      ${imgs.length > 1 ? `<button class="mini-gallery-link" data-gallery="${galleryData}" data-start="0">Смотреть изображения (${imgs.length}) ↗</button>` : ""}
       ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener">Живой сайт ↗</a>` : ""}
     </div>
   </div>`;
@@ -158,7 +161,7 @@ if (allEl) {
     ea.textContent = open ? "Свернуть все" : "Раскрыть все";
   });
 
-  // Ссылка вида portfolio.html#vsk сразу открывает кейс
+  // Ссылка вида /portfolio/#vsk сразу открывает кейс
   const fromHash = () => {
     const id = location.hash.slice(1);
     const card = id && document.getElementById((window.CASE_ALIASES || {})[id] || id);
@@ -176,7 +179,7 @@ const indexEl = $("#index");
 if (indexEl) {
   const rest = P.filter((p) => !p.featured && p.lead && !p.cats.includes("web3")).slice(0, 6);
   indexEl.innerHTML = rest.map((p, i) => `
-    <a href="portfolio.html${p.lead ? "#" + p.id : ""}" data-img="${p.cover || ""}">
+    <a href="/portfolio/${p.lead ? "#" + p.id : ""}" data-img="${p.cover || ""}">
       <span class="i-n">${pad(i + 1 + P.filter((x) => x.featured).length)}</span>
       <span class="i-c">${esc(p.client)}</span>
       <span class="i-t">${esc(p.title)}</span>
