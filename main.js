@@ -342,3 +342,16 @@ if (workPreview) {
     renderSlides();
   });
 }
+
+const projectContact = document.querySelector("#project-contact");
+if (projectContact && typeof projectContact.showModal === "function") {
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest("[data-project-contact]") || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (!projectContact.open) projectContact.showModal();
+  });
+
+  projectContact.addEventListener("click", (event) => {
+    if (event.target === projectContact) projectContact.close();
+  });
+}

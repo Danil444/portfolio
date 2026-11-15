@@ -604,8 +604,11 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
   margin-bottom: 18px;
 }
 .intro-avatar {
-  width: clamp(58px, 7vw, 98px);
-  aspect-ratio: 1;
+  --avatar-size: clamp(64px, 7.5vw, 104px);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  min-width: var(--avatar-size);
+  flex: none;
   padding: 3px;
   border: 2px solid var(--accent);
   border-radius: 50%;
@@ -758,3 +761,39 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .service-art-product { background-position: left center; }
 .service-art-web { background-position: center; }
 .service-art-brand { background-position: right center; }
+
+.contact-dialog {
+  position: fixed;
+  width: min(440px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: clamp(20px, 5vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  color: var(--ink);
+}
+.contact-dialog::backdrop { background: rgb(0 0 0 / .62); }
+.contact-dialog h2 { margin: 0 35px 8px 0; font-size: clamp(20px, 5vw, 26px); }
+.contact-dialog p { margin: 0 0 18px; color: var(--muted); }
+.contact-close {
+  position: absolute;
+  inset: 12px 12px auto auto;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+}
+.contact-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.contact-options a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.contact-options a:hover { background: var(--surface-2); }
+body:has(.contact-dialog[open]) { overflow: hidden; }

@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=20261115-release">
+  <link rel="stylesheet" href="/styles.css?v=contact2">
 <link rel="canonical" href="https://dolmateevich.ru/">
 </head>
 <body id="top">
@@ -29,7 +29,7 @@
     <button class="theme-btn" aria-label="Сменить тему">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
     </button>
-    <a class="btn btn-dark" href="https://t.me/dolmateevich" target="_blank" rel="noopener">Обсудить проект</a>
+    <a class="btn btn-dark" href="https://t.me/dolmateevich" target="_blank" rel="noopener" data-project-contact aria-haspopup="dialog">Обсудить проект</a>
     <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -39,7 +39,7 @@
     <a href="/portfolio/">Работы</a>
     <a href="/resume/">Резюме</a>
     <a href="/#contacts">Контакты</a>
-    <a href="https://t.me/dolmateevich" target="_blank" rel="noopener">Обсудить проект ↗</a>
+    <a href="https://t.me/dolmateevich" target="_blank" rel="noopener" data-project-contact aria-haspopup="dialog">Обсудить проект ↗</a>
   </nav>
 </header>
 
@@ -236,7 +236,7 @@
         <p>Данил Долматов: продуктовый и UX/UI-дизайнер. Веб-сервисы, приложения, сайты и бренды под ключ.</p>
       </div>
       <div class="f-col"><h4>Разделы</h4><a href="/portfolio/">Работы</a><a href="/resume/">Резюме</a><a href="/#services">Услуги</a><a href="/#contacts">Контакты</a></div>
-      <div class="f-col"><h4>Связь</h4><a href="https://t.me/dolmateevich" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79298405889" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:dolmateevich@yandex.ru">Почта</a><a href="https://vk.com/dolmateevich" target="_blank" rel="noopener">ВКонтакте</a></div>
+      <div class="f-col"><h4>Связь</h4><a href="https://max.ru/u/f9LHodD0cOJYCoPSD6vAAGzXBoUqdNHkpEbtyyvZ_ntrV54HUtsIJgJS9Fk" target="_blank" rel="noopener">MAX</a><a href="https://t.me/dolmateevich" target="_blank" rel="noopener">Telegram</a><a href="https://wa.me/79298405889" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:dolmateevich@yandex.ru">Почта</a><a href="https://vk.com/dolmateevich" target="_blank" rel="noopener">ВКонтакте</a></div><div class="f-col"><h4>Портфолио</h4><a href="https://www.behance.net/3e59f9b7" target="_blank" rel="noopener">Behance</a><a href="https://dribbble.com/Dolmateevich" target="_blank" rel="noopener">Dribbble</a></div>
       <div class="f-col"><h4>Москва, GMT+3</h4><span class="f-clock" data-clock>--:--</span><span class="muted">Пишите в любое время</span></div>
     </div>
     <div class="f-bottom">
@@ -247,7 +247,20 @@
   </div>
 </footer>
 
+<dialog class="contact-dialog" id="project-contact" aria-labelledby="project-contact-title">
+  <form method="dialog"><button type="submit" class="contact-close" aria-label="Закрыть">×</button></form>
+  <h2 id="project-contact-title">Обсудить проект</h2>
+  <p>Выберите удобный способ связи.</p>
+  <div class="contact-options">
+    <a href="https://t.me/dolmateevich" target="_blank" rel="noopener">Telegram</a>
+    <a href="https://max.ru/u/f9LHodD0cOJYCoPSD6vAAGzXBoUqdNHkpEbtyyvZ_ntrV54HUtsIJgJS9Fk" target="_blank" rel="noopener">MAX</a>
+    <a href="https://wa.me/79298405889" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://vk.com/dolmateevich" target="_blank" rel="noopener">ВКонтакте</a>
+    <a href="tel:+79298405889">Позвонить</a>
+    <a href="mailto:dolmateevich@yandex.ru">Написать на почту</a>
+  </div>
+</dialog>
 <script src="/projects.js?v=20261115-release"></script>
-<script src="/main.js?v=20261115-release"></script>
+<script src="/main.js?v=contact2"></script>
 </body>
 </html>
